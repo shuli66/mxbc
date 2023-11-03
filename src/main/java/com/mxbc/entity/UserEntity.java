@@ -3,7 +3,7 @@ package com.mxbc.entity;
 import java.sql.Date;
 
 public class UserEntity {
-    private String id;
+    private Integer id;
     private String userName;
     private String password;
     private String email;
@@ -14,11 +14,11 @@ public class UserEntity {
 
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
