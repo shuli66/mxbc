@@ -5,6 +5,8 @@ import com.mxbc.mapper.MenuMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MenuService{
 
@@ -15,7 +17,7 @@ public class MenuService{
         return menuMapper.getMenuId(menu_id);
     }
 
-    public MenuEntity getMenu(){
+    public List<MenuEntity> getMenu(){
         return menuMapper.getMenu();
     }
 
