@@ -2,7 +2,7 @@ package com.mxbc.entity;
 
 import java.sql.Date;
 
-public class User {
+public class UserEntity {
     private String id;
     private String userName;
     private String password;
@@ -10,7 +10,7 @@ public class User {
     private String phone;
     private Date registrationDate;
 
-    public User() {
+    public UserEntity() {
 
     }
 

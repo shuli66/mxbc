@@ -1,10 +1,11 @@
 package com.mxbc.entity;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 
-public class Menu {
+public class MenuEntity {
 
-    private Long id;
+    private Integer menu_id; // 菜单id
 
     private String item_name; // 菜单项名称
 
@@ -14,14 +15,17 @@ public class Menu {
 
     private int available_quantity; // 可用库存
 
+
+    private Timestamp creation_date;
+
     private String photoUrl; // 照片链接
 
-    public Long getId() {
-        return id;
+    public Integer getId() {
+        return menu_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Integer id) {
+        this.menu_id = menu_id;
     }
 
     public String getItem_name() {
@@ -63,4 +67,13 @@ public class Menu {
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
     }
+
+    public Timestamp getCreation_date() {
+        return creation_date;
+    }
+
+    public void setCreation_date(Timestamp creation_date) {
+        this.creation_date = creation_date;
+    }
 }
+
