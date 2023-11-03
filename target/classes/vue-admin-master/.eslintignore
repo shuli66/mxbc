@@ -1,5 +1,0 @@
-/build/
-/config/
-/dist/
-/*.js
-src/router/auto-routes.js

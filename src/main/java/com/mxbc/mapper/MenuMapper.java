@@ -10,26 +10,21 @@ import java.util.List;
 
 public interface MenuMapper {
 
-    @Select("select * from menu where menu_id = #{menu_id}")
-    int getMenuId(Integer menu_id);
+    @Select("SELECT * FROM menu WHERE menu_id = #{menuId}")
+    MenuEntity getMenuById(Integer menuId);
 
-    @Select("select * from menu")
-    List<MenuEntity> getMenu();
+    @Select("SELECT * FROM menu")
+    List<MenuEntity> getAllMenus();
 
-    @Insert("INSERT INTO `mxbc`.`menu` (`menu_id`, `item_name`, `price`, `description`, `available_quantity`, `creation_date`, `photo_url`) VALUES (null, #{item_name}, #{price}, #{description}, #{available_quantity}, #{creation_date}, #{photo_url})")
+    @Insert("INSERT INTO menu (menu_id, item_name, price, description, available_quantity, creation_date, photo_url) " +
+            "VALUES (null, #{itemName}, #{price}, #{description}, #{availableQuantity}, #{creationDate}, #{photoUrl})")
     int insertMenu(MenuEntity menuEntity);
 
-    @Delete("delete from menu where menu_id = #{menu_id}")
-    int deleteMenu(Integer menu_id);
+    @Delete("DELETE FROM menu WHERE menu_id = #{menuId}")
+    int deleteMenu(Integer menuId);
 
-    @Update("update menu set item_name = #{item_name}, price = #{price}, description = #{description}, available_quantity = #{available_quantity}, photo_url = #{photo_url} where menu_id = #{menu_id}")
+    @Update("UPDATE menu SET item_name = #{itemName}, price = #{price}, " +
+            "description = #{description}, available_quantity = #{availableQuantity}, creation_date = #{creationDate}, " +
+            "photo_url = #{photoUrl} WHERE menu_id = #{menuId}")
     int updateMenu(MenuEntity menuEntity);
-
-
-
-
-
-
-
-
 }
