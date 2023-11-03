@@ -26,4 +26,4 @@ spring.devtools:
 
 # 你可以将端口号修改为你想要的值
 server:
-  port: 8082
+  port: 8081
