@@ -6,13 +6,15 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface MenuMapper {
 
     @Select("select * from menu where menu_id = #{menu_id}")
     int getMenuId(Integer menu_id);
 
     @Select("select * from menu")
-    MenuEntity getMenu();
+    List<MenuEntity> getMenu();
 
     @Insert("INSERT INTO `mxbc`.`menu` (`menu_id`, `item_name`, `price`, `description`, `available_quantity`, `creation_date`, `photo_url`) VALUES (null, #{item_name}, #{price}, #{description}, #{available_quantity}, #{creation_date}, #{photo_url})")
     int insertMenu(MenuEntity menuEntity);
