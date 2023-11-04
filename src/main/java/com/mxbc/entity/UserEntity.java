@@ -5,27 +5,29 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Date;
+import java.sql.Timestamp;
+
 @Entity
 @Table(name = "user")
 public class UserEntity {
     @Id
     @Column(name = "user_id")
-    private Integer id;
+    private Integer userId;
+    @Column(name = "username")
     private String userName;
     private String password;
     private String email;
     @Column(name = "phone_number")
-    private String phone;
+    private String phoneNumber;
     @Column(name = "registration_date")
-    private Date registrationDate;
+    private Timestamp registrationDate;
 
-
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {
@@ -52,19 +54,19 @@ public class UserEntity {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public Date getRegistrationDate() {
+    public Timestamp getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(Timestamp registrationDate) {
         this.registrationDate = registrationDate;
     }
 }
