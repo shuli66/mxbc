@@ -1,39 +1,49 @@
 package com.mxbc.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "menu")
 public class MenuEntity {
+    @Id
+    @Column(name = "menu_id")
+    private Integer menuId; // 菜单id
 
-    private Integer menu_id; // 菜单id
-
-    private String item_name; // 菜单项名称
+    @Column(name = "item_name")
+    private String itemName; // 菜单项名称
 
     private BigDecimal price; // 价格
 
     private String description; // 描述
 
-    private int available_quantity; // 可用库存
+    @Column(name = "available_quantity")
+    private int availableQuantity; // 可用库存
 
+    @Column(name = "creation_date")
+    private Timestamp creationDate;
 
-    private Timestamp creation_date;
-
+    @Column(name = "photo_url")
     private String photoUrl; // 照片链接
 
-    public Integer getId() {
-        return menu_id;
+    public Integer getMenuId() {
+        return menuId;
     }
 
-    public void setId(Integer id) {
-        this.menu_id = menu_id;
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
     }
 
-    public String getItem_name() {
-        return item_name;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setItem_name(String item_name) {
-        this.item_name = item_name;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public BigDecimal getPrice() {
@@ -52,12 +62,20 @@ public class MenuEntity {
         this.description = description;
     }
 
-    public int getAvailable_quantity() {
-        return available_quantity;
+    public int getAvailableQuantity() {
+        return availableQuantity;
     }
 
-    public void setAvailable_quantity(int available_quantity) {
-        this.available_quantity = available_quantity;
+    public void setAvailableQuantity(int availableQuantity) {
+        this.availableQuantity = availableQuantity;
+    }
+
+    public Timestamp getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Timestamp creationDate) {
+        this.creationDate = creationDate;
     }
 
     public String getPhotoUrl() {
@@ -66,14 +84,6 @@ public class MenuEntity {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
-    }
-
-    public Timestamp getCreation_date() {
-        return creation_date;
-    }
-
-    public void setCreation_date(Timestamp creation_date) {
-        this.creation_date = creation_date;
     }
 }
 
