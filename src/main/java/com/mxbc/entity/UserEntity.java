@@ -1,18 +1,24 @@
 package com.mxbc.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Date;
-
+@Entity
+@Table(name = "user")
 public class UserEntity {
+    @Id
+    @Column(name = "user_id")
     private Integer id;
     private String userName;
     private String password;
     private String email;
+    @Column(name = "phone_number")
     private String phone;
+    @Column(name = "registration_date")
     private Date registrationDate;
 
-    public UserEntity() {
-
-    }
 
     public Integer getId() {
         return id;
@@ -61,5 +67,4 @@ public class UserEntity {
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
-
 }
