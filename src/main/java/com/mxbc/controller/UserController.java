@@ -2,13 +2,9 @@ package com.mxbc.controller;
 
 import com.mxbc.basedao.BaseController;
 import com.mxbc.entity.UserEntity;
-
-import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.mxbc.service.UserService;
-
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
@@ -29,10 +25,6 @@ public class UserController extends BaseController {
 
     @PostMapping("/insertUser")
     public Map<String,Object> insertUser(@RequestBody UserEntity userEntity){
-        // 获取当前时间
-        Timestamp date = new Timestamp(System.currentTimeMillis());
-        // 设置创建时间
-        userEntity.setRegistrationDate(date);
         return userService.insertUser(userEntity)>  0  ?
                 setResultOk("插入成功") : setResultError("插入失败");
     }
@@ -46,7 +38,7 @@ public class UserController extends BaseController {
         // 获取当前时间
         Timestamp date = new Timestamp(System.currentTimeMillis());
         // 设置更新时间
-        userEntity.setRegistrationDate(date);
+        userEntity.setCreatedDate(date);
         return userService.updateUser(userEntity)> 0 ?
                 setResultOk("更新成功") : setResultError("更新失败");
     }

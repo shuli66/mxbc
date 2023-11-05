@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="mxbc@localhost" uuid="d6776dfd-cad4-4a54-b324-c0e5cc96d87b">
+    <data-source source="LOCAL" name="milkdb@localhost" uuid="349f871b-a2f0-49b3-ad87-047009376870">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/mxbc</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/milkdb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

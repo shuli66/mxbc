@@ -1,8 +1,8 @@
 package com.mxbc.controller;
 
 import com.mxbc.basedao.BaseController;
-import com.mxbc.entity.MenuEntity;
-import com.mxbc.service.MenuService;
+import com.mxbc.entity.DrinkEntity;
+import com.mxbc.service.DrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/menu")
+@RequestMapping("/drink")
 public class MenuController extends BaseController {
 
     @Autowired
-    private MenuService menuService;
+    private DrinkService drinkService;
 
     /**
      * 根据id查询菜单*
@@ -24,9 +24,9 @@ public class MenuController extends BaseController {
      */
 
 
-    @GetMapping("/getMenuById")
-    public Map<String, Object> getMenuId(Integer id){
-        MenuEntity menu = menuService.getMenuId(id);
+    @GetMapping("/getDrinkById")
+    public Map<String, Object> getDrinkById(Integer id){
+        DrinkEntity menu = drinkService.getDrinkById(id);
         return setResultOk(menu);
     }
 
@@ -36,9 +36,9 @@ public class MenuController extends BaseController {
      * @return
      */
 
-    @GetMapping("/getMenuAll")
+    @GetMapping("/getDrinkAll")
     public Map<String, Object> getMenu(){
-        List<MenuEntity> menuEntities = menuService.getMenu();
+        List<DrinkEntity> menuEntities = drinkService.getDrinkAll();
         return  setResultOk(menuEntities);
     }
 
@@ -48,37 +48,32 @@ public class MenuController extends BaseController {
      * @return
      */
 
-    @DeleteMapping("/deleteMenu")
-    public Map<String,Object> deleteMenu(Integer id){
-        return menuService.deleteMenu(id)>0 ? setResultSuccess("删除成功！") : setResultError("删除失败！");
+    @DeleteMapping("/deleteDrink")
+    public Map<String,Object> deleteDrink(Integer id){
+        return drinkService.deleteDrink(id)>0 ? setResultSuccess("删除成功！") : setResultError("删除失败！");
     }
 
     /**
      * 修改
-     * @param menuEntity
+     * @param drinkEntity
      * @return
      */
-    @PutMapping("/updateMenu")
-    public Map<String, Object> updateMenu(@RequestBody MenuEntity menuEntity) {
-        // 获取当前时间
-        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+    @PutMapping("/updateDrink")
+    public Map<String, Object> updateDrink(@RequestBody DrinkEntity drinkEntity) {
 
-        // 设置更新时间
-        menuEntity.setCreationDate(currentTimestamp);
-
-        return menuService.updateMenu(menuEntity) > 0 ? setResultOk("更新成功！") : setResultError("更新失败！");
+        return drinkService.updateDrink(drinkEntity) > 0 ? setResultOk("更新成功！") : setResultError("更新失败！");
     }
 
 
     /**
      * 添加*
-     * @param menuEntity
+     * @param drinkEntity
      * @return
      */
     @PostMapping("/insertMenu")
-    public Map<String,Object> insertMenu(@RequestBody MenuEntity menuEntity){
-        menuEntity.setCreationDate(new Timestamp(System.currentTimeMillis()));
-        return menuService.insertMenu(menuEntity)>0 ? setResultOk("添加成功！") : setResultError("添加失败！");
+    public Map<String,Object> insertMenu(@RequestBody DrinkEntity drinkEntity){
+
+        return drinkService.insertDrink(drinkEntity)>0 ? setResultOk("添加成功！") : setResultError("添加失败！");
     }
 
 }

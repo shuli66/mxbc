@@ -13,14 +13,23 @@ public class UserEntity {
     @Id
     @Column(name = "user_id")
     private Integer userId;
+
     @Column(name = "username")
     private String userName;
+
+    @Column(name = "password_hash")
     private String password;
+
     private String email;
+
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name = "registration_date")
-    private Timestamp registrationDate;
+
+    @Column(name = "user_type")
+    private String type;
+
+    @Column(name = "created_at")
+    private Timestamp createdDate;
 
     public Integer getUserId() {
         return userId;
@@ -62,11 +71,19 @@ public class UserEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public Timestamp getRegistrationDate() {
-        return registrationDate;
+    public String getType() {
+        return type;
     }
 
-    public void setRegistrationDate(Timestamp registrationDate) {
-        this.registrationDate = registrationDate;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Timestamp getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Timestamp createdDate) {
+        this.createdDate = createdDate;
     }
 }
