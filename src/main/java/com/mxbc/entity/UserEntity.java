@@ -18,7 +18,7 @@ public class UserEntity {
     private String userName;
 
     @Column(name = "password_hash")
-    private String password;
+    private String passwordHash;
 
     private String email;
 
@@ -26,10 +26,10 @@ public class UserEntity {
     private String phoneNumber;
 
     @Column(name = "user_type")
-    private String type;
+    private String userType;
 
     @Column(name = "created_at")
-    private Timestamp createdDate;
+    private Timestamp createdAt;
 
     public Integer getUserId() {
         return userId;
@@ -47,12 +47,12 @@ public class UserEntity {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public String getEmail() {
@@ -71,19 +71,19 @@ public class UserEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getType() {
-        return type;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
-    public Timestamp getCreatedDate() {
-        return createdDate;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 }

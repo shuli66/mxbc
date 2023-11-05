@@ -38,7 +38,7 @@ public class UserController extends BaseController {
         // 获取当前时间
         Timestamp date = new Timestamp(System.currentTimeMillis());
         // 设置更新时间
-        userEntity.setCreatedDate(date);
+        userEntity.setCreatedAt(date);
         return userService.updateUser(userEntity)> 0 ?
                 setResultOk("更新成功") : setResultError("更新失败");
     }

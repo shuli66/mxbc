@@ -14,7 +14,7 @@ spring:
   freemarker:
     cache: false
 
-# MyBatis配置
+## MyBatis配置
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
