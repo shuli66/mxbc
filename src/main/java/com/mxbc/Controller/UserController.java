@@ -25,6 +25,10 @@ public class UserController extends BaseController {
 
     @PostMapping("/insertUser")
     public Map<String,Object> insertUser(@RequestBody UserEntity userEntity){
+        // 获取当前时间
+        Timestamp date = new Timestamp(System.currentTimeMillis());
+        // 设置更新时间
+        userEntity.setCreatedAt(date);
         return userService.insertUser(userEntity)>  0  ?
                 setResultOk("插入成功") : setResultError("插入失败");
     }

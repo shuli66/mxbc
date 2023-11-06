@@ -10,7 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/drink")
-public class MenuController extends BaseController {
+public class DrinkController extends BaseController {
 
     @Autowired
     private DrinkService drinkService;
@@ -24,8 +24,8 @@ public class MenuController extends BaseController {
 
     @GetMapping("/getDrinkById")
     public Map<String, Object> getDrinkById(Integer id){
-        DrinkEntity menu = drinkService.getDrinkById(id);
-        return setResultOk(menu);
+        DrinkEntity drink = drinkService.getDrinkById(id);
+        return setResultOk(drink);
     }
 
 
@@ -35,9 +35,9 @@ public class MenuController extends BaseController {
      */
 
     @GetMapping("/getDrinkAll")
-    public Map<String, Object> getMenu(){
-        List<DrinkEntity> menuEntities = drinkService.getDrinkAll();
-        return  setResultOk(menuEntities);
+    public Map<String, Object> getDrinkAll(){
+        List<DrinkEntity> drinkAll = drinkService.getDrinkAll();
+        return  setResultOk(drinkAll);
     }
 
     /**
@@ -68,8 +68,8 @@ public class MenuController extends BaseController {
      * @param drinkEntity
      * @return
      */
-    @PostMapping("/insertMenu")
-    public Map<String,Object> insertMenu(@RequestBody DrinkEntity drinkEntity){
+    @PostMapping("/insertDrink")
+    public Map<String,Object> insertDrink(@RequestBody DrinkEntity drinkEntity){
 
         return drinkService.insertDrink(drinkEntity)>0 ? setResultOk("添加成功！") : setResultError("添加失败！");
     }
