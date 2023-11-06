@@ -1,7 +1,7 @@
 package com.mxbc.controller;
 
 import com.mxbc.basedao.BaseController;
-import com.mxbc.entity.DrinkEntity;
+import com.mxbc.Entity.DrinkEntity;
 import com.mxbc.service.DrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

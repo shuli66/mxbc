@@ -1,6 +1,6 @@
 package com.mxbc.service;
 
-import com.mxbc.entity.UserEntity;
+import com.mxbc.Entity.UserEntity;
 import com.mxbc.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

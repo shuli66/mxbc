@@ -1,10 +1,9 @@
-package com.mxbc.entity;
+package com.mxbc.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity

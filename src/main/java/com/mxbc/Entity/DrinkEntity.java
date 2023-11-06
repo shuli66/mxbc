@@ -1,4 +1,4 @@
-package com.mxbc.entity;
+package com.mxbc.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

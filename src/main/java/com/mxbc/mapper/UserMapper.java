@@ -1,7 +1,10 @@
 package com.mxbc.mapper;
 
-import com.mxbc.entity.UserEntity;
-import org.apache.ibatis.annotations.*;
+import com.mxbc.Entity.UserEntity;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.mxbc.service;
 
-import com.mxbc.entity.DrinkEntity;
+import com.mxbc.Entity.DrinkEntity;
 import com.mxbc.mapper.DrinkMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

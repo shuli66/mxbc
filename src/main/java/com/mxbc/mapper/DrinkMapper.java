@@ -1,6 +1,6 @@
 package com.mxbc.mapper;
 
-import com.mxbc.entity.DrinkEntity;
+import com.mxbc.Entity.DrinkEntity;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
