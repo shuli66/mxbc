@@ -1,4 +1,4 @@
-package com.mxbc.basedao;
+package com.mxbc.Basedao;
 
 import java.util.HashMap;
 import java.util.Map;
