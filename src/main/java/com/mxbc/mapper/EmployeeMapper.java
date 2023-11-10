@@ -12,8 +12,8 @@ public interface EmployeeMapper {
     @Select("select * from employee where employee_id = #{employeeId}")
     EmployeeEntity getEmployeeById(Integer id);
 
-    @Insert("insert into employee (username,phone_number,password_hash,email,employee_type,created_at) " +
-            "values(#{userName},#{phoneNumber},#{passwordHash},#{email},#{employeeType},#{createdAt})")
+    @Insert("insert into employee (employee_id,username,phone_number,password_hash,email,employee_type,created_at) " +
+            "values(null,#{userName},#{phoneNumber},#{passwordHash},#{email},#{employeeType},#{createdAt})")
     int insertEmployee(EmployeeEntity employeeEntity);
 
 

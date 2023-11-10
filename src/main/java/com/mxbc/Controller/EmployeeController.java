@@ -25,7 +25,7 @@ public class EmployeeController extends BaseController {
         return employeeService.getEmployeeById(id);
     }
     @PostMapping("/insertEmployee")
-    public Map<String,Object> insertEmployee(EmployeeEntity employeeEntity){
+    public Map<String,Object> insertEmployee(@RequestBody EmployeeEntity employeeEntity){
         Timestamp date=new Timestamp(System.currentTimeMillis());
         employeeEntity.setCreatedAt(date);
 
@@ -39,7 +39,7 @@ public class EmployeeController extends BaseController {
                 setResultSuccess("删除成功") : setResultError("删除失败");
     }
     @PutMapping("/updateEmployee")
-    public Map<String,Object> updateEmployee(EmployeeEntity employeeEntity){
+    public Map<String,Object> updateEmployee(@RequestBody EmployeeEntity employeeEntity){
         Timestamp date=new Timestamp(System.currentTimeMillis());
         employeeEntity.setCreatedAt(date);
         return employeeService.updateEmployee(employeeEntity)> 0 ?
