@@ -27,4 +27,5 @@ public interface DrinkMapper {
             "price = #{price}, description = #{description}, image_url = #{imageUrl}, " +
             "promotional_price = #{promotionalPrice},is_available = #{isAvailable}  WHERE drink_id = #{drinkId}")
     int updateDrink(DrinkEntity drinkEntity);
+    //test
 }
