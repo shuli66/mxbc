@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/main/resources/eladmin-web" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/main/resources/vue" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/main/resources/vue2-element-admin" vcs="Git" />
   </component>
 </project>

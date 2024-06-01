@@ -16,4 +16,7 @@
       <module name="mxbc" options="-parameters" />
     </option>
   </component>
+  <component name="TypeScriptCompiler">
+    <option name="useService" value="false" />
+  </component>
 </project>

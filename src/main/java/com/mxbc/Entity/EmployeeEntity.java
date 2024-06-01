@@ -17,13 +17,24 @@ public class EmployeeEntity {
     private String passwordHash;
     @Column(name = "phone_number")
     private String phoneNumber;
+
     private String email;
     @Column(name = "employee_type")
     private String employeeType;
     @Column(name = "created_at")
     private Timestamp createdAt;
 
+    private String avatar;
 
+    private String token;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
     public Integer getEmployeeId() {
         return employeeId;
     }
@@ -78,5 +89,13 @@ public class EmployeeEntity {
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

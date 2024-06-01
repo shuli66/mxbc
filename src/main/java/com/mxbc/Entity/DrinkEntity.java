@@ -94,5 +94,7 @@ public class DrinkEntity {
     public void setPromotionalPrice(BigDecimal promotionalPrice) {
         this.promotionalPrice = promotionalPrice;
     }
+
+
 }
 

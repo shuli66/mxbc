@@ -1,6 +1,6 @@
 package com.mxbc.Controller;
 
-import com.mxbc.Basedao.BaseController;
+import com.mxbc.Config.Result;
 import com.mxbc.Entity.DrinkEntity;
 import com.mxbc.service.DrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +10,13 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/drink")
-public class DrinkController extends BaseController {
+public class DrinkController extends Result {
 
     @Autowired
     private DrinkService drinkService;
 
     /**
-     * 根据id查询菜单*
+     * 根据id查询菜单*    
      * @param id
      * @return
      */

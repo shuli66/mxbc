@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class DrinkService {
 
-    @Autowired(required = false)
+    @Autowired
     private DrinkMapper drinkMapper;
 
     public DrinkEntity getDrinkById(Integer id){
