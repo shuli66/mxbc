@@ -19,10 +19,12 @@ const routes = [
       { path:'403',name:'Auth',meta:{name:'无权限'}, component:() =>import('../views/manager/Auth')},
       { path:'home',name:'Home',meta:{name:'主页'},component:() =>import('../views/manager/Home')},
       { path:'user',name:'User',meta:{name:'用户管理'},component:() =>import('../views/manager/User')},
+      { path:'element',name:'Element',meta:{name:'test页面'},component:() =>import('../views/Element')},
       { path:'person',name:'Person',meta:{name:'用户编辑'},component:() =>import('../views/manager/Person')},
       { path:'admin',name:'Admin',meta:{name:'管理员管理'},component:() =>import('../views/manager/Admin')},
       { path:'password',name:'Password',meta:{name:'修改密码'}, component:() =>import('../views/manager/Password')},
       { path:'adminPerson',name:'AdminPerson',meta:{name:'管理员编辑'},component:() =>import('../views/manager/AdminPerson')},
+      { path:'charts',name:'Charts',meta:{name:'数据统计'},component:() =>import('../views/manager/Charts')},
 
     ]
   },

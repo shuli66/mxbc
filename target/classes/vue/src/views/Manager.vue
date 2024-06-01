@@ -17,11 +17,10 @@
             <span slot="title">系统首页</span>
           </el-menu-item>
 
-          <el-menu-item index="/">
+          <el-menu-item index="/charts">
             <i class="el-icon-eleme"></i>
-            <span slot="title">系统首页2</span>
+            <span slot="title">数据统计</span>
           </el-menu-item>
-
 
 
 
