@@ -6,6 +6,7 @@ import com.mxbc.Entity.EmployeeEntity;
 import com.mxbc.service.EmployeeService;
 import com.mxbc.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 @RestController
@@ -23,15 +25,30 @@ public class LoginController extends Result {
 
     @Autowired
     private EmployeeService employeeService;
+
+
+
+    /**
+     * 登录
+     * @param user
+     * @return
+     */
     @AuthAccess
     @PostMapping("/login")
     public Map<String, Object> login(@RequestBody EmployeeEntity user) {
-        if (StrUtil.isBlank(user.getUserName()) ||StrUtil.isBlank(user.getPasswordHash())){
-                return setResultEorMsg("数据输入不合法");
+        if (StrUtil.isBlank(user.getUserName()) || StrUtil.isBlank(user.getPasswordHash())) {
+            return setResultEorMsg("数据输入不合法");
         }
         EmployeeEntity user2 = loginService.login(user);
         return setResultOk(user2);
     }
+
+
+    /**
+     * 注册
+     * @param user
+     * @return
+     */
     @AuthAccess
     @PostMapping("/register")
     public Map<String, Object> register(@RequestBody EmployeeEntity user) {

@@ -68,7 +68,7 @@ router.beforeEach((to, from, next) => {
   // next 是帮我们跳转的路由函数
   let adminPaths = ['/admin']
   let loginUser= JSON.parse(localStorage.getItem('honey-user') || '{}')
-  if (loginUser.employeeType !=='管理员' && adminPaths.includes(to.path)){
+  if (loginUser.employeeType !=='超级管理员' && adminPaths.includes(to.path)){
       next('/403')
   }else {
     next()

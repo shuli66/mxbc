@@ -1,4 +1,5 @@
 <template>
+
   <div>
     <div>
       <el-input style="width: 200px; margin: 0 5px" placeholder="查询姓名" v-model="searchName"></el-input>
@@ -23,7 +24,7 @@
           <el-table-column label="操作" style="align-items: center">
             <template slot-scope="scope">
               <div class="button-container">
-                <el-button type="primary" plain @click="editUser(scope.row)">编辑</el-button>
+                <el-button type="warning" plain @click="editUser(scope.row)">编辑</el-button>
                 <el-button type="danger" plain @click="deleteUser(scope.row)">删除</el-button>
               </div>
             </template>
@@ -50,6 +51,14 @@
         </el-table>
       </div>
     </el-card>
+
+
+    <el-pagination
+        background
+        layout="prev, pager, next"
+        :total="1000">
+    </el-pagination>
+
 
     <!-- 新增用户对话框 -->
     <el-dialog title="新增用户" :visible.sync="addDialogVisible">

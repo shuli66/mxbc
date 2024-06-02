@@ -2,29 +2,37 @@
   <div>
     <el-row :gutter="10">
       <el-col :span="12">
+
         <el-card>
           <div style="width: 100%; height: 400px" id="line"></div>
         </el-card>
+
       </el-col>
       <el-col :span="12">
         <el-card>
           <div style="width: 100%; height: 400px" id="bar"></div>
         </el-card>
       </el-col>
+
     </el-row>
 
     <el-row :gutter="10" style="margin: 10px 0">
+
       <el-col :span="12">
         <el-card>
           <div style="width: 100%; height: 400px" id="pie"></div>
         </el-card>
       </el-col>
+
     </el-row>
+
+
   </div>
 </template>
 
 <script>
-import * as echarts from 'echarts'
+import * as echarts from 'echarts';
+
 
 const option = {
   title: {
@@ -153,7 +161,7 @@ export default {
     let pieChart = echarts.init(pieDom);
     pieChart.setOption(option2)
   },
-  methods: {}
+  methods: {},
 }
 </script>
 
