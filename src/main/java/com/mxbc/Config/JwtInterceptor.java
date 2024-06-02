@@ -11,7 +11,7 @@ import com.mxbc.expection.ServiceException;
 import com.mxbc.mapper.EmployeeMapper;
 import com.mxbc.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -26,7 +26,7 @@ public class JwtInterceptor implements HandlerInterceptor {
     private EmployeeMapper employeeMapper;
 
     @Autowired
-    private StringRedisTemplate stringRedisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
@@ -54,12 +54,13 @@ public class JwtInterceptor implements HandlerInterceptor {
             throw new ServiceException("401", "请登录");
         }
 
-        // 从 Redis 中查询 token
+        // 从 Redis 中查询用户信息
         String redisKey = "user:" + userId;
-        String redisToken = stringRedisTemplate.opsForValue().get(redisKey);
-        if (redisToken != null && redisToken.equals(token)) {
+        EmployeeEntity userFromCache = (EmployeeEntity) redisTemplate.opsForValue().get(redisKey);
+        if (userFromCache != null && userFromCache.getToken().equals(token)) {
             // token 验证成功，重新设置过期时间
-            stringRedisTemplate.expire(redisKey, 3600, TimeUnit.SECONDS);
+            redisKey = "user:" + userFromCache.getUserName();
+            redisTemplate.expire(redisKey, 3600, TimeUnit.SECONDS);
             return true;
         } else {
             // token 验证失败，重新查询数据库进行验证
@@ -75,7 +76,7 @@ public class JwtInterceptor implements HandlerInterceptor {
                 // token 验证成功，生成新的 token 存入 Redis
                 String newToken = TokenUtils.createToken(user.getEmployeeId().toString(), user.getPasswordHash());
                 redisKey = "user:" + user.getUserName();
-                stringRedisTemplate.opsForValue().set(redisKey, newToken, 3600, TimeUnit.SECONDS);
+                redisTemplate.opsForValue().set(redisKey, user, 3600, TimeUnit.SECONDS);
                 return true;
             } catch (JWTVerificationException e) {
                 throw new ServiceException("401", "请登录");

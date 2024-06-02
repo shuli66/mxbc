@@ -19,69 +19,53 @@ public class LoginService {
     @Autowired
     private EmployeeMapper employeeMapper;
 
+
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
-
     /**
      * 登录service
      * @param user
      * @return
      */
 
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
-
     private static final long TOKEN_EXPIRATION_SECONDS = 3600;
 
     public EmployeeEntity login(EmployeeEntity user) {
-        // 先从 Redis 中获取 token
+        // 先从 Redis 中获取用户信息
         String redisKey = "user:" + user.getUserName(); // 使用用户名作为键名
-        String token = stringRedisTemplate.opsForValue().get(redisKey);
 
-        if (token != null) {
-            // 如果 Redis 中存在 token，则根据 token 反解出用户信息
-            String userId;
-            try {
-                userId = JWT.decode(token).getAudience().get(0);
-            } catch (JWTDecodeException j) {
-                throw new ServiceException("Token 解析失败");
-            }
-
-            EmployeeEntity userDB = employeeMapper.getEmployeeById(Integer.valueOf(userId));
-            if (userDB == null) {
-                throw new ServiceException("账户不存在");
-            }
-
-            if (!user.getPasswordHash().equals(userDB.getPasswordHash())) {
+        EmployeeEntity userFromCache = (EmployeeEntity) redisTemplate.opsForValue().get(redisKey);
+        if (userFromCache != null) {
+            // 如果缓存中存在用户信息，则直接返回
+            if (!user.getPasswordHash().equals(userFromCache.getPasswordHash())) {
                 throw new ServiceException("用户名或密码错误");
             }
-
             // 密码正确，则重新设置 token 过期时间并返回用户信息
-            stringRedisTemplate.expire(redisKey, TOKEN_EXPIRATION_SECONDS, TimeUnit.SECONDS);
-            userDB.setToken(token);
-            return userDB;
+            redisTemplate.expire(redisKey, TOKEN_EXPIRATION_SECONDS, TimeUnit.SECONDS);
+            return userFromCache;
         }
 
-        // 如果 Redis 中不存在 token，则从数据库中查询用户信息
-        EmployeeEntity userDB = employeeMapper.selectByName(user.getUserName());
-        if (userDB == null) {
+        // 如果 Redis 中不存在用户信息，则从数据库中查询用户信息
+        EmployeeEntity userFromDB = employeeMapper.selectByName(user.getUserName());
+        if (userFromDB == null) {
             throw new ServiceException("账户不存在");
         }
 
-        if (!user.getPasswordHash().equals(userDB.getPasswordHash())) {
+        if (!user.getPasswordHash().equals(userFromDB.getPasswordHash())) {
             throw new ServiceException("用户名或密码错误");
         }
 
         // 生成新的 token
-        token = TokenUtils.createToken(userDB.getEmployeeId().toString(), userDB.getPasswordHash());
+        String token = TokenUtils.createToken(userFromDB.getEmployeeId().toString(), userFromDB.getPasswordHash());
+        userFromDB.setToken(token); // 设置用户对象的token字段
 
-        // 将 token 存储到 Redis 中，键为用户名，值为 token，设置过期时间
-        stringRedisTemplate.opsForValue().set(redisKey, token, TOKEN_EXPIRATION_SECONDS, TimeUnit.SECONDS);
+        // 将用户信息存储到 Redis 中，键为 "user:" + userName，值为用户对象，设置过期时间
+        redisTemplate.opsForValue().set(redisKey, userFromDB, TOKEN_EXPIRATION_SECONDS, TimeUnit.SECONDS);
 
         // 返回用户信息
-        userDB.setToken(token);
-        return userDB;
+        return userFromDB;
     }
+
 
 
 
